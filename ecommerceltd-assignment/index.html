@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>The Mobile Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Open+Sans:400,600'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css'>
+<link rel="stylesheet" href="./style.css">
+<script src="function.js" defer></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+    <div class="container">
+      <div class="navigation">
+
+        <div class="logo">
+          <i class="icon icon-basket"></i>The Mobile Store</div>
+        <div class="secure">
+          <i class="icon icon-shield"></i>
+          <span>Secure Checkout</span>
+
+        </div>
+      </div>
+      <div class="notification">
+        Complete Your Purchase
+      </div>
+    </div>
+  </header>
+  <section class="content">
+
+    <div class="container">
+
+    </div>
+    <div class="details shadow">
+      <div class="details__item">
+
+        <div class="item__image">
+          <img class="iphone" src="https://www.apple.com/v/iphone/compare/k/images/overview/compare_iphoneXSmax_silver_large.jpg" alt="">
+        </div>
+        <div class="item__details">
+          <div class="item__title">
+            Iphone 13 Pro - Limited Edition
+          </div>
+          <div class="item__price">
+            $ 1750
+          </div>
+          <div class="item__quantity">
+            Quantity: 1
+          </div>
+          <div class="item__description">
+            <ul style="">
+              <li>Super fast and power efficient</li>
+              <li>A lot of fast memory</li>
+              <li>High resolution camera</li>
+              <li>Smart tools for health and traveling and more</li>
+              <li>Share your games and achievements with your friends via Group Play</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="discount"></div>
+
+    <div class="container">
+      <div class="payment">
+        <div class="payment__title">
+          Payment Method
+        </div>
+        <div class="payment__types">
+          <div class="payment__type payment__type--cc active" id='cc' onclick="typeclick('cc')">
+            <i class="icon icon-credit-card"></i>Credit Card</div>
+          <div class="payment__type payment__type--paypal">
+            <i class="icon icon-paypal"></i>Paypal</div>
+          <div class="payment__type payment__type--paylater" id='paylater' onclick="typeclick('paylater')">
+            <i class="icon icon-wallet"></i>Pay Later</div>
+          <div class="payment__type payment__type--paypal">
+            <i class="icon icon-note"></i>Invoice</div>
+        </div>
+
+        <div class="payment__info">
+          <div class="payment__cc" id="ccinfo">
+            <div class="payment__title">
+              <i class="icon icon-user"></i>Personal Information
+            </div>
+            <form>
+              <div class="form__cc">
+                <div class="row">
+                  <div class="field">
+                    <div class="title">Username
+                    </div>
+                    <input type="text" class="input txt text-validated" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <div class="title">Password
+                    </div>
+                    <input type="password" class="input txt text-validated"/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <div class="title">Full Name
+                    </div>
+                    <input type="text" class="input txt text-validated" />
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <div class="payment__shipping">
+            <div class="payment__title">
+              <i class="icon icon-plane"></i> Shipping Information
+            </div>
+            <div class="details__user">
+              <div class="user__address">Shipping Address: 22 St, Pine Valley, California 43092
+                <br>USA</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="actions">
+
+        <a href="bnpl1.html" class="btn action__submit" target="popup" onclick="window.open('bnpl1.html','popup','width=600,height=600'); return false;">Place your Order
+          <i class="icon icon-arrow-right-circle"></i>
+        </a>
+        <a href="#" class="backBtn">Go Back to Shop</a>
+
+      </div>
+  </section>
+  </div>
+<!-- partial -->
+  
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>The Mobile Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Open+Sans:400,600'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+//variables to store id and customer state
+var visitorId
+var newcustomer = true
+
+//add visitorID generation API call here
+
+
+//helper functions to store and retreive id from backend store
+function setVisitorId(id) {
+    Url = "http://localhost:8081/api/visitors/"+id;
+    //alert(Url)
+    
+    $.get(Url, function(data,status){
+            newcustomer = false;
+    }).fail(function(data,status){
+            addVisitoridToBackend(id);
+    })
+    visitorId = id
+} 
+
+function addVisitoridToBackend(id) {
+    Url = "http://localhost:8081/api/visitors";
+    body = {'visitorid':id,'accountid':'42343'};
+
+    $.ajax({
+  url:Url,
+  type:"POST",
+  data:JSON.stringify(body),
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+  success: function(){
+            done = true
+    }
+  })
+}
+
+function transitiontophverify() {
+    document.getElementById("getid").innerHTML = "Enter the 6 digit verification code sent to your phone"
+    document.getElementById("idtext").value = "320 461"
+    document.getElementById("btn").innerHTML = "Verify"
+    document.getElementById("btn").onclick = transtitiontoemail
+}
+
+function transtitiontoemail() {
+    if(newcustomer == false){
+        transtitiontophotoverify();
+    } else {
+    document.getElementById("getid").innerHTML = "Email id"
+    document.getElementById("idtext").value = "alex.jones@phonestore.com"
+    document.getElementById("btn").innerHTML = "Send Code"
+    document.getElementById("btn").onclick = transtitiontoemailverify
+    }
+}
+
+function transtitiontoemailverify() {
+    document.getElementById("getid").innerHTML = "Enter the 6 digit verification code sent to your email"
+    document.getElementById("idtext").value = "636 756"
+    document.getElementById("btn").innerHTML = "Verify"
+    document.getElementById("btn").onclick = transtitiontophoto
+}
+
+function transtitiontophoto() {
+    document.getElementById("getid").innerHTML = "Upload a photo of your drivers license"
+    document.getElementById("idtext").style.visibility = "hidden"
+    document.getElementById("imgcont").width = "270"
+    document.getElementById("imgcont").height = "140"
+    document.getElementById("btn").innerHTML = "Upload Photo"
+    document.getElementById("btn").onclick = transtitiontophotoverify
+}
+
+function transtitiontophotoverify() {
+    document.getElementById("imgcont").width = "0"
+    document.getElementById("imgcont").height = "0"
+    if(newcustomer == false) {
+        document.getElementById("getid").innerHTML = "Welcome Alexander. Please verify the Credit Card details and place your order."
+    } else {
+    document.getElementById("getid").innerHTML = "Photo Verified. You are approved for 4 equal payments. Enter your credit card details."
+    }
+    document.getElementById("idtext").style.visibility = "visible"
+    document.getElementById("idtext").value = "4542 9931 9292 2293"
+    document.getElementById("btn").innerHTML = "Place Order"
+    document.getElementById("btn").onclick = transtitioncomplete
+}
+
+function transtitioncomplete() {
+    if(newcustomer == true){
+      document.getElementById("getid").innerHTML = "Congratulations! \nYour limited edition IPhone 13 pro is on the way"
+    } else {
+      document.getElementById("getid").innerHTML = "There seems to be an issue with your order. Please contact customer service to place another order."
+    }
+    document.getElementById("idtext").style.visibility = "hidden"
+    document.getElementById("btn").style.visibility = "hidden"
+}
+</script>
+</head>
+<style>
+    .content {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .payment__title {
+        margin: 40px 0 20px 0;
+        font-size: 18px;
+        display: flex;
+        text-align: left;
+    }
+
+    .payment__title .icon {
+  margin-right: 10px;
+}
+.payment__cc {
+  flex: 60%;
+}
+
+.row {
+  display: flex;
+}
+
+.field {
+  padding-top: 15px;
+  padding-right: 30px;
+  width: 50%;
+}
+
+.title {
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.input {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  height: 30px;
+  padding-left: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #5e6977;
+}
+
+input[type=text] {
+  display: initial;
+  padding: 15px;
+}
+
+.txt {
+  border-color: #e1e8ee;
+  width: 100%;
+}
+
+.text-validated {
+  border-color: #7dc855;
+  background-image: url("../images/icon-tick.png");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+}
+
+.btn {
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 8px;
+  border: 0;
+  letter-spacing: 1px;
+  color: #fff;
+  background: #246eea;
+  padding: 20px 60px 20px 60px;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  margin-top: 300px;
+}
+
+.btn .icon {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: #4984ea;
+}
+
+.btn.action__back {
+  background: transparent;
+  color: #a0a0a0;
+}
+
+    </style>
+<body>
+
+                <div class="content">
+                    <div class="payment__title">
+                        <i class="icon icon-user"></i>Confirm Order
+                    </div>
+                    <form>
+                        <div class="form__cc">
+                            <div class="row">
+                                <div class="details__user">
+                                    <div class="text" id="getid">Welcome! Click Submit to order the Limited Edition IPhone 13 Pro</div>
+                                </div>
+                            </div>
+                        </div>
+                     </form>
+                     <div>
+                        <div style="margin-top: 100px;">
+               
+                            <a href="#" class="btn" target="popup" onclick="transtitioncomplete()" id="btn">Submit
+                                <i class="icon icon-arrow-right-circle"></i>
+                            </a>
+               
+                        </div>
+                    </div>
+                </div>
+</body>
+</html>
