@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>The Mobile Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Open+Sans:400,600'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css'>
-<link rel="stylesheet" href="./style.css">
-<script src="function.js" defer></script>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Open+Sans:400,600'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css'>
+  <link rel="stylesheet" href="./style.css">
+  <script src="function.js" defer></script>
+  <script>
+    // Initialize the agent on page load.
+    const fpPromise = import('https://fpjscdn.net/v3/H3AFp7QGfBDjumeD0wcA')
+      .then(FingerprintJS => FingerprintJS.load());
+
+    // Get the visitorId when you need it.
+    fpPromise
+      .then(fp => fp.get())
+      .then(result => {
+        const visitorId = result.visitorId;
+        console.log(visitorId);
+      });
+  </script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <header>
     <div class="container">
       <div class="navigation">
-
         <div class="logo">
           <i class="icon icon-basket"></i>The Mobile Store</div>
         <div class="secure">
           <i class="icon icon-shield"></i>
           <span>Secure Checkout</span>
-
         </div>
       </div>
       <div class="notification">
@@ -29,13 +40,10 @@
     </div>
   </header>
   <section class="content">
-
     <div class="container">
-
     </div>
     <div class="details shadow">
       <div class="details__item">
-
         <div class="item__image">
           <img class="iphone" src="https://www.apple.com/v/iphone/compare/k/images/overview/compare_iphoneXSmax_silver_large.jpg" alt="">
         </div>
@@ -57,15 +65,11 @@
               <li>Smart tools for health and traveling and more</li>
               <li>Share your games and achievements with your friends via Group Play</li>
             </ul>
-
           </div>
-
         </div>
       </div>
-
     </div>
     <div class="discount"></div>
-
     <div class="container">
       <div class="payment">
         <div class="payment__title">
@@ -81,7 +85,6 @@
           <div class="payment__type payment__type--paypal">
             <i class="icon icon-note"></i>Invoice</div>
         </div>
-
         <div class="payment__info">
           <div class="payment__cc" id="ccinfo">
             <div class="payment__title">
@@ -110,7 +113,6 @@
                     <input type="text" class="input txt text-validated" />
                   </div>
                 </div>
-
               </div>
             </form>
           </div>
@@ -122,23 +124,18 @@
               <div class="user__address">Shipping Address: 22 St, Pine Valley, California 43092
                 <br>USA</div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="actions">
-
         <a href="bnpl1.html" class="btn action__submit" target="popup" onclick="window.open('bnpl1.html','popup','width=600,height=600'); return false;">Place your Order
           <i class="icon icon-arrow-right-circle"></i>
         </a>
         <a href="#" class="backBtn">Go Back to Shop</a>
-
       </div>
+    </div>
   </section>
-  </div>
-<!-- partial -->
-  
 </body>
 </html>
