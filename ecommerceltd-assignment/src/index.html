@@ -1,13 +1,21 @@
- <header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop 42</title>
+  <!-- Add any other head elements here -->
+</head>
+<body>
+  <header>
     <div class="container">
       <div class="navigation">
-
         <div class="logo">
-          <i class="icon icon-basket"></i>shop42</div>
+          <i class="icon icon-basket"></i>shop42
+        </div>
         <div class="secure">
           <i class="icon icon-shield"></i>
           <span>Secure Checkout</span>
-
         </div>
       </div>
       <div class="notification">
@@ -15,78 +23,57 @@
       </div>
     </div>
   </header>
+
   <section class="content">
-
-    <div class="container">
-
-    </div>
+    <div class="container"></div>
     <div class="details shadow">
       <div class="details__item">
-
         <div class="item__image">
           <img class="iphone" src="https://www.apple.com/v/iphone/compare/k/images/overview/compare_iphoneXSmax_silver_large.jpg" alt="">
         </div>
         <div class="item__details">
-          <div class="item__title">
-            Iphone X
-          </div>
-          <div class="item__price">
-            649,99 £
-          </div>
-          <div class="item__quantity">
-            Quantity: 1
-          </div>
+          <div class="item__title">Iphone X</div>
+          <div class="item__price">649,99 £</div>
+          <div class="item__quantity">Quantity: 1</div>
           <div class="item__description">
-            <ul style="">
+            <ul>
               <li>Super fast and power efficient</li>
               <li>A lot of fast memory</li>
               <li>High resolution camera</li>
               <li>Smart tools for health and traveling and more</li>
               <li>Share your games and achievements with your friends via Group Play</li>
             </ul>
-
           </div>
-
         </div>
       </div>
-
     </div>
+
     <div class="discount"></div>
 
     <div class="container">
       <div class="payment">
-        <div class="payment__title">
-          Payment Method
-        </div>
+        <div class="payment__title">Payment Method</div>
         <div class="payment__types">
-          <div class="payment__type payment__type--cc active">
-            <i class="icon icon-credit-card"></i>Credit Card</div>
-          <div class="payment__type payment__type--paypal">
-            <i class="icon icon-paypal"></i>Paypal</div>
-          <div class="payment__type payment__type--paypal">
-            <i class="icon icon-wallet"></i>SEPA</div>
-          <div class="payment__type payment__type--paypal">
-            <i class="icon icon-note"></i>Invoice</div>
+          <div class="payment__type payment__type--cc active"><i class="icon icon-credit-card"></i>Credit Card</div>
+          <div class="payment__type payment__type--paypal"><i class="icon icon-paypal"></i>Paypal</div>
+          <div class="payment__type payment__type--paypal"><i class="icon icon-wallet"></i>SEPA</div>
+          <div class="payment__type payment__type--paypal"><i class="icon icon-note"></i>Invoice</div>
         </div>
 
         <div class="payment__info">
           <div class="payment__cc">
-            <div class="payment__title">
-              <i class="icon icon-user"></i>Personal Information
-            </div>
+            <div class="payment__title"><i class="icon icon-user"></i>Personal Information</div>
             <form>
               <div class="form__cc">
                 <div class="row">
                   <div class="field">
-                    <div class="title">Credit Card Number
-                    </div>
+                    <div class="title">Credit Card Number</div>
                     <input type="text" class="input txt text-validated" value="4542 9931 9292 2293" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="field small">
-                    <div class="title">Expiry Date
-                    </div>
+                    <div class="title">Expiry Date</div>
                     <select class="input ddl">
                       <option selected>01</option>
                       <option>02</option>
@@ -136,46 +123,53 @@
                     </select>
                   </div>
                   <div class="field small">
-                    <div class="title">CVV Code
-                      <span class="numberCircle">?</span>
-                    </div>
+                    <div class="title">CVV Code<span class="numberCircle">?</span></div>
                     <input type="text" class="input txt" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="field">
-                    <div class="title">Name on Card
-                    </div>
+                    <div class="title">Name on Card</div>
                     <input type="text" class="input txt" />
                   </div>
                 </div>
-
               </div>
             </form>
           </div>
-          <div class="payment__shipping">
-            <div class="payment__title">
-              <i class="icon icon-plane"></i> Shiping Information
-            </div>
-            <div class="details__user">
-              <div class="user__name">John Doe
-                <br> 13/03/1980</div>
-              <div class="user__address">Shipping Address: 22 Street, Address
-                <br>Country</div>
-            </div>
 
+          <div class="payment__shipping">
+            <div class="payment__title"><i class="icon icon-plane"></i> Shipping Information</div>
+            <div class="details__user">
+              <div class="user__name">John Doe<br>13/03/1980</div>
+              <div class="user__address">Shipping Address: 22 Street, Address<br>Country</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="actions">
-
-        <a href="#" class="btn action__submit">Place your Order
-          <i class="icon icon-arrow-right-circle"></i>
-        </a>
+        <a href="#" class="btn action__submit">Place your Order<i class="icon icon-arrow-right-circle"></i></a>
         <a href="#" class="backBtn">Go Back to Shop</a>
-
       </div>
+    </div>
   </section>
-  </div>
+
+  <!-- FingerprintJS script added before closing body tag -->
+  <script>
+    // Initialize the agent on page load.
+    const fpPromise = import('https://fpjscdn.net/v3/H3AFp7QGfBDjumeD0wcA')
+      .then(FingerprintJS => FingerprintJS.load());
+
+    // Get the visitorId when you need it.
+    fpPromise
+      .then(fp => fp.get())
+      .then(result => {
+        const visitorId = result.visitorId;
+        console.log(visitorId);
+      });
+  </script>
+
+</body>
+</html>
